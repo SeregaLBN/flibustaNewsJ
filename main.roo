@@ -1,0 +1,21 @@
+project --topLevelPackage com.alg.flibusta.latest --projectName LatestBooks
+jpa setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
+#jpa setup --provider HIBERNATE --database ORACLE
+
+entity jpa --class ~.domain.NewItems --table flibusta_latest --testAutomatically
+field  date   --fieldName updated    --column updated_Date  --type java.util.Date        --dateTimeFormatPattern "yyyy.MM.dd hh:mm:ss" --comment "���������"
+field  number --fieldName idTagBook  --column id_tagBook    --type java.lang.Integer --notNull                                         --comment "flibusta book id"
+field  string --fieldName title      --column title                                  --notNull                                         --comment "�������� �����"
+field  string --fieldName author     --column author                                 --notNull                                         --comment "����� �����"
+field  string --fieldName categories --column categories                             --notNull                                         --comment "���������"
+field  string --fieldName content    --column content                                --notNull                                         --comment "����������"
+
+web mvc setup
+web mvc all --package ~.web
+#controller all --package ~.web
+logging setup --level INFO
+
+#selenium test --controller ~.web.NewItemsController
+#security setup
+#perform tests
+quit
