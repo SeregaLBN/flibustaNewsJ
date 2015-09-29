@@ -3,12 +3,12 @@ jpa setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
 #jpa setup --provider HIBERNATE --database ORACLE
 
 entity jpa --class ~.domain.NewItems --table flibusta_latest --testAutomatically
-field  date   --fieldName updated    --column updated_Date  --type java.util.Date        --dateTimeFormatPattern "yyyy.MM.dd hh:mm:ss" --comment "���������"
+field  date   --fieldName updated    --column updated_Date  --type java.util.Date        --dateTimeFormatPattern "yyyy.MM.dd hh:mm:ss" --comment "Added to flibusta"
 field  number --fieldName idTagBook  --column id_tagBook    --type java.lang.Integer --notNull                                         --comment "flibusta book id"
-field  string --fieldName title      --column title                                  --notNull                                         --comment "�������� �����"
-field  string --fieldName author     --column author                                 --notNull                                         --comment "����� �����"
-field  string --fieldName categories --column categories                             --notNull                                         --comment "���������"
-field  string --fieldName content    --column content                                --notNull                                         --comment "����������"
+field  string --fieldName title      --column title                                  --notNull                                         --comment "Book title"
+field  string --fieldName author     --column author                                 --notNull                                         --comment "Book author"
+field  string --fieldName categories --column categories                             --notNull                                         --comment "Categories"
+field  string --fieldName content    --column content                                --notNull                                         --comment "Content description"
 
 web mvc setup
 web mvc all --package ~.web

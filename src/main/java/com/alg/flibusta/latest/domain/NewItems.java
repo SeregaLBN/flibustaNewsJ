@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class NewItems {
 
     /**
-     * ���������
+     * Added to flibusta
      */
     @Column(name = "updated_Date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -30,28 +30,28 @@ public class NewItems {
     private Integer idTagBook;
 
     /**
-     * �������� �����
+     * Book title
      */
     @NotNull
     @Column(name = "title")
     private String title;
 
     /**
-     * ����� �����
+     * Book author
      */
     @NotNull
     @Column(name = "author")
     private String author;
 
     /**
-     * ���������
+     * Categories
      */
     @NotNull
     @Column(name = "categories")
     private String categories;
 
     /**
-     * ����������
+     * Content description
      */
     @NotNull
     @Column(name = "content")
