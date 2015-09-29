@@ -7,7 +7,7 @@
         <field:input field="idTagBook" id="c_com_alg_flibusta_latest_domain_NewItems_idTagBook" required="true" validationMessageCode="field_invalid_integer" z="PqqbJosJOCUeAEhmX/TMpxpEiIM="/>
         <field:input field="title" id="c_com_alg_flibusta_latest_domain_NewItems_title" required="true" z="n57dYpXwEYqDK6beABfVGvwSZ5Q="/>
         <field:input field="author" id="c_com_alg_flibusta_latest_domain_NewItems_author" required="true" z="gskHf/ldoZezmj7Bk500T8G6NIc="/>
-        <field:input field="categories" id="c_com_alg_flibusta_latest_domain_NewItems_categories" required="true" z="FfLcMcGaVTLU7Z4d1erHg84DBRc="/>
-        <field:input field="content" id="c_com_alg_flibusta_latest_domain_NewItems_content" required="true" z="eKl1e4DYoQSMNx+HpDKiOsTs9aw="/>
+        <field:textarea field="categories" id="c_com_alg_flibusta_latest_domain_NewItems_categories" required="true" z="FfLcMcGaVTLU7Z4d1erHg84DBRc="/>
+        <field:textarea field="content" id="c_com_alg_flibusta_latest_domain_NewItems_content" required="true" z="eKl1e4DYoQSMNx+HpDKiOsTs9aw="/>
     </form:update>
 </div>

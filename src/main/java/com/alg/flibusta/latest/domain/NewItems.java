@@ -8,6 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @RooJavaBean
 @RooToString
@@ -48,6 +49,7 @@ public class NewItems {
      */
     @NotNull
     @Column(name = "categories")
+    @Size(max = 999)
     private String categories;
 
     /**
@@ -55,5 +57,6 @@ public class NewItems {
      */
     @NotNull
     @Column(name = "content")
+    @Size(max = 4000)
     private String content;
 }
