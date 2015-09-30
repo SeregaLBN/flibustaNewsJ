@@ -48,7 +48,7 @@ public class RefreshDataController {
 		});
 
 		synchronized (_sync) {
-			_sync.wait(3000);
+			_sync.wait();
 		}
 		return "redirect:/newitemses";
 	}
@@ -133,13 +133,19 @@ public class RefreshDataController {
 				if (ni.getAuthor() != null) {
 					sb.append(URLEncoder.encode(ni.getAuthor(), "UTF-8"));
 				}
-				sb.append("&categories=").append(URLEncoder.encode(ni.getCategories(), "UTF-8"));
+				sb.append("&categories=");
+				if (ni.getCategories() != null) {
+					sb.append(URLEncoder.encode(ni.getCategories(), "UTF-8"));
+				}
 				sb.append("&content=").append(URLEncoder.encode(ni.getContent(), "UTF-8"));
 				http.setPostData(sb.toString().getBytes("UTF-8"));
 
 				http.sendRequest(_redirectUrl);
 				if (200 == http.getResponseCode()) {
 					++cnt;
+				} else {
+					logger.warn("... bad responce code: " + http.getResponseCode());
+					logger.warn(new String(http.getResponseBody(), "UTF-8"));
 				}
 				if (cnt == 5)
 					synchronized (_sync) {

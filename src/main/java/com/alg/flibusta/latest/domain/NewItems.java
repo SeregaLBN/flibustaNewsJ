@@ -46,7 +46,6 @@ public class NewItems {
     /**
      * Categories
      */
-    @NotNull
     @Column(name = "categories")
     @Size(max = 999)
     private String categories;
