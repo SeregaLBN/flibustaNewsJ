@@ -40,7 +40,6 @@ public class NewItems {
     /**
      * Book author
      */
-    @NotNull
     @Column(name = "author")
     private String author;
 
