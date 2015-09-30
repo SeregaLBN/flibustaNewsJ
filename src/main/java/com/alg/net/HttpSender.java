@@ -212,7 +212,7 @@ public class HttpSender  {
 
 			// request header
 			step = "set RequestProperty";
-			connection.addRequestProperty("User-Agent", "PayProcessing/1.0 (IBox.ua)");
+			//connection.addRequestProperty("User-Agent", "PayProcessing/1.0 (IBox.ua)");
 			if (_reqHeaders != null)
 				for (SimpleEntry<String, String> elem : _reqHeaders)
 					connection.addRequestProperty(elem.getKey(), elem.getValue());

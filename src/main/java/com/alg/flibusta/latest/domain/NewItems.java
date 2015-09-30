@@ -27,7 +27,7 @@ public class NewItems {
      * flibusta book id
      */
     @NotNull
-    @Column(name = "id_tagBook")
+    @Column(name = "id_tag_Book")
     private Integer idTagBook;
 
     /**
