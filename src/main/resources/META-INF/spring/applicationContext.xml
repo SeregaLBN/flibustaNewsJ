@@ -70,4 +70,7 @@
         <property name="persistenceUnitName" value="persistenceUnit"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <bean class="com.alg.flibusta.latest.service.Refresher" id="refresher" />
+
 </beans>
