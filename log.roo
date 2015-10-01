@@ -1,7 +1,6 @@
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2015-10-01 09:43:59
 project --topLevelPackage com.alg.flibusta.latest --projectName LatestBooks
 jpa setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY
-#jpa setup --provider HIBERNATE --database ORACLE
-
 entity jpa --class ~.domain.NewItem --table flibusta_latest --testAutomatically
 field  date   --fieldName updated    --column updated_Date  --type java.util.Date        --dateTimeFormatPattern "yyyy.MM.dd hh:mm:ss" --comment "Added to flibusta"
 field  number --fieldName idTagBook  --column id_tag_Book   --type java.lang.Integer --notNull                                         --comment "flibusta book id"
@@ -9,13 +8,11 @@ field  string --fieldName title      --column title                             
 field  string --fieldName author     --column author                                                                                   --comment "Book author"
 field  string --fieldName categories --column categories    --sizeMax 999                                                              --comment "Categories"
 field  string --fieldName content    --column content       --sizeMax 4000           --notNull                                         --comment "Content description"
-
 web mvc setup
 web mvc all --package ~.web
-#controller all --package ~.web
 logging setup --level INFO
-
-#selenium test --controller ~.web.NewItemController
-#security setup
-#perform tests
 quit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2015-10-01 09:44:05
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2015-10-01 09:44:05
+// script --file main.roo
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2015-10-01 09:44:05
