@@ -4,7 +4,7 @@
 	<groupId>com.alg.flibusta.latest</groupId>
 	<artifactId>LatestBooks</artifactId>
 	<packaging>war</packaging>
-	<version>0.1.0.BUILD-SNAPSHOT</version>
+	<version>1.0.0.BUILD-SNAPSHOT</version>
 	<name>LatestBooks</name>
 	<properties>
 		<aspectj.version>1.8.1</aspectj.version>
