@@ -5,8 +5,6 @@ import com.alg.flibusta.latest.domain.NewItemJson;
 import com.ksn.net.HttpSender;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -18,6 +16,8 @@ import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
@@ -37,9 +37,29 @@ public class RefreshDataController {
 	String _redirectUrl;
 	Object _sync = new Object();
 
+	@PersistenceContext
+	transient EntityManager entityManager;
+
 	@RequestMapping(produces = "text/html")
-	public String Refres(final HttpServletRequest httpServletRequest) throws URISyntaxException, InterruptedException {
+	public String Refres(final HttpServletRequest httpServletRequest) throws Throwable {
 		_redirectUrl = getURL(httpServletRequest, "/newitems?add");
+
+		logger.info("--------------------------------");
+		logger.info("Start refreshing...");
+		try {
+			// int deletedCount = entityManager.createQuery("DELETE FROM " + NewItem.class.getSimpleName()).executeUpdate();
+			// int deletedCount = entityManager.createNativeQuery("DELETE FROM flibusta_latest").executeUpdate();
+
+			List<NewItem> all = entityManager.createQuery("from NewItem").getResultList();
+			for (NewItem ni : all) { // all.forEach((NewItem item) -> item.remove());
+				ni.remove();
+			}
+			logger.info("Deleted old items: " + all.size());
+
+		} catch (Throwable ex) {
+			logger.error(ex);
+			throw ex;
+		}
 
 		_service.submit(new Runnable() {
 			public void run() {
