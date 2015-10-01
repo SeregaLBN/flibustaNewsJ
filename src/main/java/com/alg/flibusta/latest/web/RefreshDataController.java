@@ -1,8 +1,8 @@
 package com.alg.flibusta.latest.web;
 
-import com.alg.flibusta.latest.domain.NewItems;
+import com.alg.flibusta.latest.domain.NewItem;
 import com.alg.flibusta.latest.domain.NewItemJson;
-import com.alg.net.HttpSender;
+import com.ksn.net.HttpSender;
 
 import java.io.IOException;
 import java.net.URI;
@@ -39,7 +39,7 @@ public class RefreshDataController {
 
 	@RequestMapping(produces = "text/html")
 	public String Refres(final HttpServletRequest httpServletRequest) throws URISyntaxException, InterruptedException {
-		_redirectUrl = getURL(httpServletRequest, "/newitemses?add");
+		_redirectUrl = getURL(httpServletRequest, "/newitems?add");
 
 		_service.submit(new Runnable() {
 			public void run() {
@@ -50,7 +50,7 @@ public class RefreshDataController {
 		synchronized (_sync) {
 			_sync.wait();
 		}
-		return "redirect:/newitemses";
+		return "redirect:/newitems";
 	}
 
 	void RequestToNewBooks() {
@@ -117,7 +117,7 @@ public class RefreshDataController {
 		DateFormat df = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss", Locale.ENGLISH);
 		int cnt = 0;
 		for (NewItemJson item : newItems) {
-			NewItems ni = item.cast();
+			NewItem ni = item.cast();
 			HttpSender http = new HttpSender();
 			try {
 				List<SimpleEntry<String, String>> additionalReqHeaders = new ArrayList<SimpleEntry<String, String>>();

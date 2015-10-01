@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.alg.net;
+package com.ksn.net;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,8 +24,8 @@ import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.alg.net.ssl.SSLContextConfigurator;
-import com.alg.net.ssl.SSLSocketFactoryEx;
+import com.ksn.net.ssl.SSLContextConfigurator;
+import com.ksn.net.ssl.SSLSocketFactoryEx;
 
 /**
  * @author krivulya

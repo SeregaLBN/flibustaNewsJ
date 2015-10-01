@@ -1,4 +1,4 @@
-package com.alg.net.ssl;
+package com.ksn.net.ssl;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;

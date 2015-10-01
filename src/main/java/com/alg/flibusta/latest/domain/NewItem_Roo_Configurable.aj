@@ -3,11 +3,11 @@
 
 package com.alg.flibusta.latest.domain;
 
-import com.alg.flibusta.latest.domain.NewItems;
+import com.alg.flibusta.latest.domain.NewItem;
 import org.springframework.beans.factory.annotation.Configurable;
 
-privileged aspect NewItems_Roo_Configurable {
+privileged aspect NewItem_Roo_Configurable {
     
-    declare @type: NewItems: @Configurable;
+    declare @type: NewItem: @Configurable;
     
 }

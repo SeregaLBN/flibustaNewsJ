@@ -1,6 +1,6 @@
 package com.alg.flibusta.latest.web;
 
-import com.alg.flibusta.latest.domain.NewItems;
+import com.alg.flibusta.latest.domain.NewItem;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,22 +17,22 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@RequestMapping("/newitemses")
+@RequestMapping("/newitems")
 @Controller
-@RooWebScaffold(path = "newitemses", formBackingObject = NewItems.class)
-public class NewItemsController {
+@RooWebScaffold(path = "newitems", formBackingObject = NewItem.class)
+public class NewItemController {
 
 	private static final Log logger = LogFactory.getLog(RefreshDataController.class);
 
 	@RequestMapping(params = "add", method = RequestMethod.POST, produces = "text/html")
-	public void add(@Valid NewItems newItems, BindingResult bindingResult, HttpServletRequest httpServletRequest,
+	public void add(@Valid NewItem newItem, BindingResult bindingResult, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws IOException {
 		PrintWriter pw = httpServletResponse.getWriter();
 		if (bindingResult.hasErrors()) {
 			logger.error(bindingResult);
 		}
 		try {
-			newItems.persist();
+			newItem.persist();
 			httpServletResponse.setStatus(200);
 			pw.print("Ok");
 		} catch (Throwable ex) {

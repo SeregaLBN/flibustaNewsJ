@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_alg_flibusta_latest_domain_NewItem" items="${newitems}" z="gWzjMeOkSmIptasDVpxIjkAvb1A=">
+        <table:table data="${newitems}" id="l_com_alg_flibusta_latest_domain_NewItem" path="/newitems" z="kqNossYYD8SDSc8eOzNJNG6e4m8=">
+            <table:column date="true" dateTimePattern="${newItem_updated_date_format}" id="c_com_alg_flibusta_latest_domain_NewItem_updated" property="updated" z="JeccHAPNqzvbO0Dd+L97EvGg5ag="/>
+            <table:column id="c_com_alg_flibusta_latest_domain_NewItem_idTagBook" property="idTagBook" z="5qQNme3W24fhTj4n0D2ob//c1tA="/>
+            <table:column id="c_com_alg_flibusta_latest_domain_NewItem_title" property="title" z="Rd3N67wVoS/sW32/lCDX8YcWwpE="/>
+            <table:column id="c_com_alg_flibusta_latest_domain_NewItem_author" property="author" z="miIdQtXTbjyayFNHfE44osaO7mc="/>
+            <table:column id="c_com_alg_flibusta_latest_domain_NewItem_categories" property="categories" z="c0zldiQ6F/iR4LgaRrn+kfkv38I="/>
+            <table:column id="c_com_alg_flibusta_latest_domain_NewItem_content" property="content" z="7bfKVp+KdA6aljCrBQDycWeRjfE="/>
+        </table:table>
+    </page:list>
+</div>

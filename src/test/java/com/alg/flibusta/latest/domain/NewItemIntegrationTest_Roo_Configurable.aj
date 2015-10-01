@@ -3,11 +3,11 @@
 
 package com.alg.flibusta.latest.domain;
 
-import com.alg.flibusta.latest.domain.NewItemsIntegrationTest;
+import com.alg.flibusta.latest.domain.NewItemIntegrationTest;
 import org.springframework.beans.factory.annotation.Configurable;
 
-privileged aspect NewItemsIntegrationTest_Roo_Configurable {
+privileged aspect NewItemIntegrationTest_Roo_Configurable {
     
-    declare @type: NewItemsIntegrationTest: @Configurable;
+    declare @type: NewItemIntegrationTest: @Configurable;
     
 }

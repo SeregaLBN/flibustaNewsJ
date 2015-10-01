@@ -3,8 +3,8 @@
 
 package com.alg.flibusta.latest.domain;
 
-import com.alg.flibusta.latest.domain.NewItems;
-import com.alg.flibusta.latest.domain.NewItemsDataOnDemand;
+import com.alg.flibusta.latest.domain.NewItem;
+import com.alg.flibusta.latest.domain.NewItemDataOnDemand;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,16 +17,16 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
-privileged aspect NewItemsDataOnDemand_Roo_DataOnDemand {
+privileged aspect NewItemDataOnDemand_Roo_DataOnDemand {
     
-    declare @type: NewItemsDataOnDemand: @Component;
+    declare @type: NewItemDataOnDemand: @Component;
     
-    private Random NewItemsDataOnDemand.rnd = new SecureRandom();
+    private Random NewItemDataOnDemand.rnd = new SecureRandom();
     
-    private List<NewItems> NewItemsDataOnDemand.data;
+    private List<NewItem> NewItemDataOnDemand.data;
     
-    public NewItems NewItemsDataOnDemand.getNewTransientNewItems(int index) {
-        NewItems obj = new NewItems();
+    public NewItem NewItemDataOnDemand.getNewTransientNewItem(int index) {
+        NewItem obj = new NewItem();
         setAuthor(obj, index);
         setCategories(obj, index);
         setContent(obj, index);
@@ -36,37 +36,43 @@ privileged aspect NewItemsDataOnDemand_Roo_DataOnDemand {
         return obj;
     }
     
-    public void NewItemsDataOnDemand.setAuthor(NewItems obj, int index) {
+    public void NewItemDataOnDemand.setAuthor(NewItem obj, int index) {
         String author = "author_" + index;
         obj.setAuthor(author);
     }
     
-    public void NewItemsDataOnDemand.setCategories(NewItems obj, int index) {
+    public void NewItemDataOnDemand.setCategories(NewItem obj, int index) {
         String categories = "categories_" + index;
+        if (categories.length() > 999) {
+            categories = categories.substring(0, 999);
+        }
         obj.setCategories(categories);
     }
     
-    public void NewItemsDataOnDemand.setContent(NewItems obj, int index) {
+    public void NewItemDataOnDemand.setContent(NewItem obj, int index) {
         String content = "content_" + index;
+        if (content.length() > 4000) {
+            content = content.substring(0, 4000);
+        }
         obj.setContent(content);
     }
     
-    public void NewItemsDataOnDemand.setIdTagBook(NewItems obj, int index) {
+    public void NewItemDataOnDemand.setIdTagBook(NewItem obj, int index) {
         Integer idTagBook = new Integer(index);
         obj.setIdTagBook(idTagBook);
     }
     
-    public void NewItemsDataOnDemand.setTitle(NewItems obj, int index) {
+    public void NewItemDataOnDemand.setTitle(NewItem obj, int index) {
         String title = "title_" + index;
         obj.setTitle(title);
     }
     
-    public void NewItemsDataOnDemand.setUpdated(NewItems obj, int index) {
+    public void NewItemDataOnDemand.setUpdated(NewItem obj, int index) {
         Date updated = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
         obj.setUpdated(updated);
     }
     
-    public NewItems NewItemsDataOnDemand.getSpecificNewItems(int index) {
+    public NewItem NewItemDataOnDemand.getSpecificNewItem(int index) {
         init();
         if (index < 0) {
             index = 0;
@@ -74,36 +80,36 @@ privileged aspect NewItemsDataOnDemand_Roo_DataOnDemand {
         if (index > (data.size() - 1)) {
             index = data.size() - 1;
         }
-        NewItems obj = data.get(index);
+        NewItem obj = data.get(index);
         Long id = obj.getId();
-        return NewItems.findNewItems(id);
+        return NewItem.findNewItem(id);
     }
     
-    public NewItems NewItemsDataOnDemand.getRandomNewItems() {
+    public NewItem NewItemDataOnDemand.getRandomNewItem() {
         init();
-        NewItems obj = data.get(rnd.nextInt(data.size()));
+        NewItem obj = data.get(rnd.nextInt(data.size()));
         Long id = obj.getId();
-        return NewItems.findNewItems(id);
+        return NewItem.findNewItem(id);
     }
     
-    public boolean NewItemsDataOnDemand.modifyNewItems(NewItems obj) {
+    public boolean NewItemDataOnDemand.modifyNewItem(NewItem obj) {
         return false;
     }
     
-    public void NewItemsDataOnDemand.init() {
+    public void NewItemDataOnDemand.init() {
         int from = 0;
         int to = 10;
-        data = NewItems.findNewItemsEntries(from, to);
+        data = NewItem.findNewItemEntries(from, to);
         if (data == null) {
-            throw new IllegalStateException("Find entries implementation for 'NewItems' illegally returned null");
+            throw new IllegalStateException("Find entries implementation for 'NewItem' illegally returned null");
         }
         if (!data.isEmpty()) {
             return;
         }
         
-        data = new ArrayList<NewItems>();
+        data = new ArrayList<NewItem>();
         for (int i = 0; i < 10; i++) {
-            NewItems obj = getNewTransientNewItems(i);
+            NewItem obj = getNewTransientNewItem(i);
             try {
                 obj.persist();
             } catch (final ConstraintViolationException e) {

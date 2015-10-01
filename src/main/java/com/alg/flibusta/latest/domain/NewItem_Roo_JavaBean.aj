@@ -3,56 +3,56 @@
 
 package com.alg.flibusta.latest.domain;
 
-import com.alg.flibusta.latest.domain.NewItems;
+import com.alg.flibusta.latest.domain.NewItem;
 import java.util.Date;
 
-privileged aspect NewItems_Roo_JavaBean {
+privileged aspect NewItem_Roo_JavaBean {
     
-    public Date NewItems.getUpdated() {
+    public Date NewItem.getUpdated() {
         return this.updated;
     }
     
-    public void NewItems.setUpdated(Date updated) {
+    public void NewItem.setUpdated(Date updated) {
         this.updated = updated;
     }
     
-    public Integer NewItems.getIdTagBook() {
+    public Integer NewItem.getIdTagBook() {
         return this.idTagBook;
     }
     
-    public void NewItems.setIdTagBook(Integer idTagBook) {
+    public void NewItem.setIdTagBook(Integer idTagBook) {
         this.idTagBook = idTagBook;
     }
     
-    public String NewItems.getTitle() {
+    public String NewItem.getTitle() {
         return this.title;
     }
     
-    public void NewItems.setTitle(String title) {
+    public void NewItem.setTitle(String title) {
         this.title = title;
     }
     
-    public String NewItems.getAuthor() {
+    public String NewItem.getAuthor() {
         return this.author;
     }
     
-    public void NewItems.setAuthor(String author) {
+    public void NewItem.setAuthor(String author) {
         this.author = author;
     }
     
-    public String NewItems.getCategories() {
+    public String NewItem.getCategories() {
         return this.categories;
     }
     
-    public void NewItems.setCategories(String categories) {
+    public void NewItem.setCategories(String categories) {
         this.categories = categories;
     }
     
-    public String NewItems.getContent() {
+    public String NewItem.getContent() {
         return this.content;
     }
     
-    public void NewItems.setContent(String content) {
+    public void NewItem.setContent(String content) {
         this.content = content;
     }
     

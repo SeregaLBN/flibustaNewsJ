@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @RooJavaBean
 @RooToString
 @RooJpaActiveRecord(table = "flibusta_latest")
-public class NewItems {
+public class NewItem {
 
     /**
      * Added to flibusta

@@ -3,97 +3,97 @@
 
 package com.alg.flibusta.latest.domain;
 
-import com.alg.flibusta.latest.domain.NewItems;
+import com.alg.flibusta.latest.domain.NewItem;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
-privileged aspect NewItems_Roo_Jpa_ActiveRecord {
+privileged aspect NewItem_Roo_Jpa_ActiveRecord {
     
     @PersistenceContext
-    transient EntityManager NewItems.entityManager;
+    transient EntityManager NewItem.entityManager;
     
-    public static final List<String> NewItems.fieldNames4OrderClauseFilter = java.util.Arrays.asList("updated", "idTagBook", "title", "author", "categories", "content");
+    public static final List<String> NewItem.fieldNames4OrderClauseFilter = java.util.Arrays.asList("updated", "idTagBook", "title", "author", "categories", "content");
     
-    public static final EntityManager NewItems.entityManager() {
-        EntityManager em = new NewItems().entityManager;
+    public static final EntityManager NewItem.entityManager() {
+        EntityManager em = new NewItem().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
     
-    public static long NewItems.countNewItemses() {
-        return entityManager().createQuery("SELECT COUNT(o) FROM NewItems o", Long.class).getSingleResult();
+    public static long NewItem.countNewItems() {
+        return entityManager().createQuery("SELECT COUNT(o) FROM NewItem o", Long.class).getSingleResult();
     }
     
-    public static List<NewItems> NewItems.findAllNewItemses() {
-        return entityManager().createQuery("SELECT o FROM NewItems o", NewItems.class).getResultList();
+    public static List<NewItem> NewItem.findAllNewItems() {
+        return entityManager().createQuery("SELECT o FROM NewItem o", NewItem.class).getResultList();
     }
     
-    public static List<NewItems> NewItems.findAllNewItemses(String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM NewItems o";
+    public static List<NewItem> NewItem.findAllNewItems(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM NewItem o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
             if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
                 jpaQuery = jpaQuery + " " + sortOrder;
             }
         }
-        return entityManager().createQuery(jpaQuery, NewItems.class).getResultList();
+        return entityManager().createQuery(jpaQuery, NewItem.class).getResultList();
     }
     
-    public static NewItems NewItems.findNewItems(Long id) {
+    public static NewItem NewItem.findNewItem(Long id) {
         if (id == null) return null;
-        return entityManager().find(NewItems.class, id);
+        return entityManager().find(NewItem.class, id);
     }
     
-    public static List<NewItems> NewItems.findNewItemsEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM NewItems o", NewItems.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    public static List<NewItem> NewItem.findNewItemEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM NewItem o", NewItem.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
-    public static List<NewItems> NewItems.findNewItemsEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM NewItems o";
+    public static List<NewItem> NewItem.findNewItemEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM NewItem o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
             if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
                 jpaQuery = jpaQuery + " " + sortOrder;
             }
         }
-        return entityManager().createQuery(jpaQuery, NewItems.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery(jpaQuery, NewItem.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional
-    public void NewItems.persist() {
+    public void NewItem.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
     
     @Transactional
-    public void NewItems.remove() {
+    public void NewItem.remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            NewItems attached = NewItems.findNewItems(this.id);
+            NewItem attached = NewItem.findNewItem(this.id);
             this.entityManager.remove(attached);
         }
     }
     
     @Transactional
-    public void NewItems.flush() {
+    public void NewItem.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
     
     @Transactional
-    public void NewItems.clear() {
+    public void NewItem.clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
     
     @Transactional
-    public NewItems NewItems.merge() {
+    public NewItem NewItem.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
-        NewItems merged = this.entityManager.merge(this);
+        NewItem merged = this.entityManager.merge(this);
         this.entityManager.flush();
         return merged;
     }

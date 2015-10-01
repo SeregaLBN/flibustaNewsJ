@@ -49,8 +49,8 @@ public class NewItemJson {
 		this.content = content;
 	}
 
-    public NewItems cast() throws ParseException {
-    	NewItems ni = new NewItems();
+    public NewItem cast() throws ParseException {
+    	NewItem ni = new NewItem();
     	ni.setAuthor(this.getAuthor());
     	ni.setCategories(String.join("; ", this.getCategories()));
     	ni.setContent(this.getContent());

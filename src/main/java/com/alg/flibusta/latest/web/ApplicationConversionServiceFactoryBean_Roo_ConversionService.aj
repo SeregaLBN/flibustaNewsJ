@@ -3,7 +3,7 @@
 
 package com.alg.flibusta.latest.web;
 
-import com.alg.flibusta.latest.domain.NewItems;
+import com.alg.flibusta.latest.domain.NewItem;
 import com.alg.flibusta.latest.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -13,34 +13,34 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     declare @type: ApplicationConversionServiceFactoryBean: @Configurable;
     
-    public Converter<NewItems, String> ApplicationConversionServiceFactoryBean.getNewItemsToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.alg.flibusta.latest.domain.NewItems, java.lang.String>() {
-            public String convert(NewItems newItems) {
-                return new StringBuilder().append(newItems.getUpdated()).append(' ').append(newItems.getIdTagBook()).append(' ').append(newItems.getTitle()).append(' ').append(newItems.getAuthor()).toString();
+    public Converter<NewItem, String> ApplicationConversionServiceFactoryBean.getNewItemToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.alg.flibusta.latest.domain.NewItem, java.lang.String>() {
+            public String convert(NewItem newItem) {
+                return new StringBuilder().append(newItem.getUpdated()).append(' ').append(newItem.getIdTagBook()).append(' ').append(newItem.getTitle()).append(' ').append(newItem.getAuthor()).toString();
             }
         };
     }
     
-    public Converter<Long, NewItems> ApplicationConversionServiceFactoryBean.getIdToNewItemsConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.alg.flibusta.latest.domain.NewItems>() {
-            public com.alg.flibusta.latest.domain.NewItems convert(java.lang.Long id) {
-                return NewItems.findNewItems(id);
+    public Converter<Long, NewItem> ApplicationConversionServiceFactoryBean.getIdToNewItemConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.alg.flibusta.latest.domain.NewItem>() {
+            public com.alg.flibusta.latest.domain.NewItem convert(java.lang.Long id) {
+                return NewItem.findNewItem(id);
             }
         };
     }
     
-    public Converter<String, NewItems> ApplicationConversionServiceFactoryBean.getStringToNewItemsConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.alg.flibusta.latest.domain.NewItems>() {
-            public com.alg.flibusta.latest.domain.NewItems convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), NewItems.class);
+    public Converter<String, NewItem> ApplicationConversionServiceFactoryBean.getStringToNewItemConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.alg.flibusta.latest.domain.NewItem>() {
+            public com.alg.flibusta.latest.domain.NewItem convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), NewItem.class);
             }
         };
     }
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
-        registry.addConverter(getNewItemsToStringConverter());
-        registry.addConverter(getIdToNewItemsConverter());
-        registry.addConverter(getStringToNewItemsConverter());
+        registry.addConverter(getNewItemToStringConverter());
+        registry.addConverter(getIdToNewItemConverter());
+        registry.addConverter(getStringToNewItemConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

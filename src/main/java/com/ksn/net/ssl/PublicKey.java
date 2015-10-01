@@ -1,4 +1,4 @@
-package com.alg.net.ssl;
+package com.ksn.net.ssl;
 
 import java.security.KeyStore;
 import java.security.cert.Certificate;

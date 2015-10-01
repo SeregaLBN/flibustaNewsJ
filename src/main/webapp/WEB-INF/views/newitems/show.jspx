@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_alg_flibusta_latest_domain_NewItem" object="${newitem}" path="/newitems" z="/65sqKFWJTK3AIswUp8KgCiMyCc=">
+        <field:display date="true" dateTimePattern="${newItem_updated_date_format}" field="updated" id="s_com_alg_flibusta_latest_domain_NewItem_updated" object="${newitem}" z="TjiHb6pDgAKVqsVjc8c4u/WNl9Y="/>
+        <field:display field="idTagBook" id="s_com_alg_flibusta_latest_domain_NewItem_idTagBook" object="${newitem}" z="VE10u2aFMm5FOY5QBDqU3MZJdg0="/>
+        <field:display field="title" id="s_com_alg_flibusta_latest_domain_NewItem_title" object="${newitem}" z="wWBvu1aLDBncvyw2Xzh10xBCTYI="/>
+        <field:display field="author" id="s_com_alg_flibusta_latest_domain_NewItem_author" object="${newitem}" z="/Ce453cf/+Yn1cuOczwQN11cc+s="/>
+        <field:display field="categories" id="s_com_alg_flibusta_latest_domain_NewItem_categories" object="${newitem}" z="U+lXMroEe+gIjGMKVfzR0tJ0Cxo="/>
+        <field:display field="content" id="s_com_alg_flibusta_latest_domain_NewItem_content" object="${newitem}" z="miGyBlODbKqS6YgeZkLJHE60f+k="/>
+    </page:show>
+</div>

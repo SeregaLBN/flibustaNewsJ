@@ -1,4 +1,4 @@
-package com.alg.net.ssl;
+package com.ksn.net.ssl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

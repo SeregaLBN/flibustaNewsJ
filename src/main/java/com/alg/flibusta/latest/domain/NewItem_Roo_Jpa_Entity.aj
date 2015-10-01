@@ -3,7 +3,7 @@
 
 package com.alg.flibusta.latest.domain;
 
-import com.alg.flibusta.latest.domain.NewItems;
+import com.alg.flibusta.latest.domain.NewItem;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,34 +12,34 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-privileged aspect NewItems_Roo_Jpa_Entity {
+privileged aspect NewItem_Roo_Jpa_Entity {
     
-    declare @type: NewItems: @Entity;
+    declare @type: NewItem: @Entity;
     
-    declare @type: NewItems: @Table(name = "flibusta_latest");
+    declare @type: NewItem: @Table(name = "flibusta_latest");
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long NewItems.id;
+    private Long NewItem.id;
     
     @Version
     @Column(name = "version")
-    private Integer NewItems.version;
+    private Integer NewItem.version;
     
-    public Long NewItems.getId() {
+    public Long NewItem.getId() {
         return this.id;
     }
     
-    public void NewItems.setId(Long id) {
+    public void NewItem.setId(Long id) {
         this.id = id;
     }
     
-    public Integer NewItems.getVersion() {
+    public Integer NewItem.getVersion() {
         return this.version;
     }
     
-    public void NewItems.setVersion(Integer version) {
+    public void NewItem.setVersion(Integer version) {
         this.version = version;
     }
     
