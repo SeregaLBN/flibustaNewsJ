@@ -11,5 +11,6 @@
       <spring:message code="welcome_text" htmlEscape="false"/>
     </p>
     <input type="button" onclick="location.href='./refresh';" value="Refresh data" />
+    <input type="button" onclick="location.href='./reports?demo';" value="View demo peport" />
   </util:panel>
 </div>
