@@ -306,6 +306,21 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.6.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.birt.example</groupId>
+			<artifactId>viewer-servlet</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.birt.runtime</groupId>
+			<artifactId>org.eclipse.birt.runtime</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

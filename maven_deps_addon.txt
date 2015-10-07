@@ -1,0 +1,12 @@
+Install oracle jdbc driver to maven repo.
+Download and install Oracle Client
+Check enviroment variable ORACLE_HOME
+Install to maven:
+   mvn install:install-file -Dfile=%ORACLE_HOME%\jdbc\lib\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
+
+--------------------------------------------------------------------------------
+Integrating the BIRT Viewer
+https://www.ibm.com/developerworks/library/ba-birt-viewer-java-webapps/
+Download programfiles.zip contained viewservlets.jar. Unpack.
+Install viewservlets.jar to local maven repo:
+   mvn install:install-file -Dfile=[location_where_you_saved]\viewservlets.jar -DgroupId=org.eclipse.birt.example -DartifactId=viewer-servlet -Dversion=4.2.0 -Dpackaging=jar
