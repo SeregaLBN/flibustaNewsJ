@@ -1,11 +1,10 @@
 package com.alg.flibusta.latest.service;
 
+import com.alg.flibusta.latest.domain.LatestJson;
 import com.alg.flibusta.latest.domain.NewItem;
 import com.alg.flibusta.latest.domain.NewItemJson;
 import com.ksn.net.HttpSender;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -25,8 +24,14 @@ public class Refresher {
 
 	public void run() throws Exception {
 		logger.info(">> --------------------------------");
-		logger.info("Start refreshing...");
+		RequestToNewBooks();
+		logger.info("<< --------------------------------");
+	}
+	
+	void DeleteAll() throws Exception {
 		try {
+			logger.info("Start all old removign...");
+
 			// int deletedCount = entityManager.createQuery("DELETE FROM " + NewItem.class.getSimpleName()).executeUpdate();
 			// int deletedCount = entityManager.createNativeQuery("DELETE FROM flibusta_latest").executeUpdate();
 
@@ -35,13 +40,10 @@ public class Refresher {
 				ni.remove();
 			}
 			logger.info("Deleted old items: " + all.size());
-
 		} catch (Exception ex) {
 			logger.error(ex);
 			throw ex;
 		}
-
-		RequestToNewBooks();
 	}
 
 	void RequestToNewBooks() {
@@ -62,16 +64,23 @@ public class Refresher {
 		} catch (Throwable ex) {
 			logger.error(ex);
 		}
+		synchronized (this) {
+			this.notify();
+		}
 	}
 
-	void JsonTransform(String json) throws IOException, ParseException {
+	void JsonTransform(String json) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		NewItemJson[] newItems = mapper.readValue(json, NewItemJson[].class);
+		LatestJson latest = mapper.readValue(json, LatestJson.class);
 
-		logger.info("Received " + newItems.length + " items");
+		int len = latest.getEntries().length;
+		logger.info("Received " + len + " new items");
+		if (len > 0) {
+			DeleteAll();
+		}
 
 		int cnt = 0;
-		for (NewItemJson item : newItems) {
+		for (NewItemJson item : latest.getEntries()) {
 			NewItem ni = item.cast();
 			try {
 				ni.persist();
@@ -84,11 +93,7 @@ public class Refresher {
 				logger.error(ex);
 			}
 		}
-		logger.info("Processed " + cnt + " items");
-		synchronized (this) {
-			this.notify();
-		}
-		logger.info("<< --------------------------------");
+		logger.info("Processed " + cnt + " new items");
 	}
 
 }
