@@ -1,5 +1,6 @@
 package com.alg.flibusta.latest.service;
 
+import com.alg.flibusta.latest.domain.LatestJson;
 import com.alg.flibusta.latest.domain.NewItem;
 import com.alg.flibusta.latest.domain.NewItemJson;
 import com.ksn.net.HttpSender;
@@ -70,16 +71,16 @@ public class Refresher {
 
 	void JsonTransform(String json) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		NewItemJson[] newItems = mapper.readValue(json, NewItemJson[].class);
+		LatestJson latest = mapper.readValue(json, LatestJson.class);
 
-		int len = newItems.length;
+		int len = latest.getEntries().length;
 		logger.info("Received " + len + " new items");
 		if (len > 0) {
 			DeleteAll();
 		}
 
 		int cnt = 0;
-		for (NewItemJson item : newItems) {
+		for (NewItemJson item : latest.getEntries()) {
 			NewItem ni = item.cast();
 			try {
 				ni.persist();
